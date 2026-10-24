@@ -49,5 +49,7 @@ ferramentas possam ser distribuídos dentro dos forks sem incompatibilidade de l
 
 ## Status
 
-**Fase 0 (setup) concluída** — ver `docs/fase-0.md`. As fases seguintes estão descritas
-lá e dependem de autorização explícita por fase.
+**Fase 0 (setup) concluída** — ver `docs/fase-0.md`. **Fase 1 (protótipo do mod)
+concluída** — ver `docs/fase-1.md`: o mod existe na branch `mod/traducao-ptbr`
+do clone do build (commit `6110c63`), sem tocar em nenhum arquivo do jogo. As
+fases seguintes estão descritas lá e dependem de autorização explícita por fase.

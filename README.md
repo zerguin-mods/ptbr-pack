@@ -11,8 +11,8 @@ compartilham entre os dois alvos:
 | --- | --- |
 | `GLOSSARY.md` | As decisões de tradução: regras gerais, nomes próprios, vocabulário fixo |
 | `docs/` | Documentos de referência e o registro das fases do projeto |
-| `lang/` (futura) | O catálogo `pt-BR.json` — chave = linha inglesa, valor = tradução |
-| `tools/` (futura) | Validadores: colisão de chaves (case-insensitive), near-duplicates, chaves mortas contra a extração |
+| `lang/` | O catálogo `pt-BR.json` — chave = linha inglesa, valor = tradução — e o rascunho da rodada corrente (`pt-BR.overlay.json`) |
+| `tools/` | Validadores: `delta.mjs` compara o catálogo com a extração de um build (novas, mortas, near-matches, colisões por caixa) |
 
 ## Arquitetura dos alvos
 
@@ -49,7 +49,8 @@ ferramentas possam ser distribuídos dentro dos forks sem incompatibilidade de l
 
 ## Status
 
-**Fase 0 (setup) concluída** — ver `docs/fase-0.md`. **Fase 1 (protótipo do mod)
-concluída** — ver `docs/fase-1.md`: o mod existe na branch `mod/traducao-ptbr`
-do clone do build (commit `6110c63`), sem tocar em nenhum arquivo do jogo. As
-fases seguintes estão descritas lá e dependem de autorização explícita por fase.
+**Fase 0 (setup) concluída** — ver `docs/fase-0.md`. **Fase 1 (protótipo do mod) concluída** —
+ver `docs/fase-1.md`: o mod existe na branch `mod/traducao-ptbr` do clone do build. **Fase 2
+(tradução da camada autoral) concluída** — ver `docs/fase-2.md`: o framework i18n está na
+branch `framework/i18n`, o catálogo cobre a extração da 0.5.0 e a interface segue a prosa.
+As fases seguintes estão descritas nos registros e dependem de autorização explícita por fase.

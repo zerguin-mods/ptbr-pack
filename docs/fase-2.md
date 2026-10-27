@@ -53,10 +53,40 @@ genérico para o `core`, o catálogo e o wiring no mod.
 - **Pendente**: revisão em jogo das 167 entradas rascunhadas (abrir o jogo com o mod ligado e
   ler a UI/intro/posts) — é a aceitação da fase
 
-## Próxima fase (Fase 3 — hooks novos no core) — PENDENTE DE AUTORIZAÇÃO
+## Desdobramento — o PR #116 e a resposta da organização (2026-10-26)
 
-Cobrir as chamadas de LLM sem hook: text ledger (memórias de DM — os "resumos em inglês" do
-teste de jogo), bunnybot, segredos, ocasiões, quizzes, fatos de aula, perfis, posts de
-encerramento, graduação. PR próprio para o `core`, ao lado dos hooks existentes. Antes disso:
-publicação (gh auth pendente desde a Fase 0) — `framework/i18n` para revisão primeiro, o PR
-do mod depois.
+O PR do framework foi **encerrado pela org com revisão respeitosa** — recusa de direção,
+não de qualidade ("o trabalho foi feito com cuidado, e li tudo"). Os pontos, e o que
+significam para este projeto:
+
+1. **"Core é apenas o sistema de mods"** — a tradução da interface é conversa **com a Venus
+   Dev e com a org antes de PR**; o canal é o Discord de modding (#mod-development), onde
+   fomos convidados.
+2. **A org está removendo os mods do repositório** para distribuí-los via **kit publicado** —
+   o que torna obsoleta toda a rota "PR do mod → main": no mundo novo, o mod vira um kit.
+   E o transform build-time não alcançaria as telas de mods; a tradução de UI, se a org a
+   quiser, deveria vir por `t()` dentro do próprio kit.
+3. **Encapsulamento por estrutura é arriscado** (um valor comparado pode virar chave) —
+   ponto legítimo; nosso pack mitiga deixando as ~70 chaves de código sem tradução.
+4. **Tabelas de label avaliam `t()` no import, antes do pack** — **bug real, e nosso**;
+   corrigido no fork (commit `e1319d1`): leitura síncrona no boot via `lang:bootSync`,
+   idioma lembrado em `data/lang/active`, App importado dinamicamente depois do dicionário.
+5. O bump do Electron, em PR separado — anotado para qualquer futuro retorno ao upstream.
+
+**Estratégia a partir daqui**: distribuição **fork-only** (o fork funciona e foi testado em
+jogo); a metade prosa do mod segue valendo e, no mundo do kit, vira kit também; a conversa
+de UI vai pro Discord #mod-development e, no horizonte do jogo oficial, pra Venus Dev —
+i18n nativo no jogo seria o melhor lar do catálogo.
+
+## Próxima fase — PENDENTE DE AUTORIZAÇÃO
+
+Sem PRs ao upstream até a conversa do Discord acontecer. Candidatos, em ordem:
+1. **Discord #mod-development** (o usuário leva os rascunhos prontos: resposta ao PR e post
+   de abertura)
+2. **Manutenção do fork**: revisão das 167 entradas rascunhadas em jogo; correções no
+   catálogo e ressincronização em `assets/lang/pt-BR.json`
+3. **Fase 3** (hooks no core para text ledger, bunnybot, segredos etc.) — ganha nova
+   relevância com o kit: hooks que o kit expõe definirão o que um mod alcança
+4. **Fase 5** (patcher do jogo oficial) — inalterada pelo desdobramento; o catálogo é o
+   mesmo para os dois alvos
+
